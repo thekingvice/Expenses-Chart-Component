@@ -1,0 +1,9 @@
+.App__balance {
+  display: flex;
+  justify-content: space-between;
+}
+
+.App__spending {
+  display: flex;
+  justify-content: center;
+}
