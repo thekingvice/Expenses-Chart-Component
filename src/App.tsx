@@ -1,6 +1,9 @@
 import "./App.css";
+// Import JSON data
+// Link JSON data to bar chart (100% = highest value)
 
 function App() {
+
   return (
     <div className="App">
       <div className="App__balance">
