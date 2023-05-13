@@ -8,6 +8,14 @@ function App() {
     console.log(jsonData);
   };
 
+  //style height = heighest number in json/ number of element
+
+  // data.forEach(item => {
+  //   if (item.amount > highestAmount) {
+  //     highestAmount = item.amount;
+  //   }
+  // });
+
   return (
     <div className="App">
       <div className="App__balance">
