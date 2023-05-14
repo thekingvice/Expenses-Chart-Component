@@ -1,5 +1,6 @@
 import "./App.css";
 import jsonData from "../public/data.json";
+import { useState, useEffect } from "react";
 // Import JSON data
 // Link JSON data to bar chart (100% = highest value)
 
@@ -8,13 +9,26 @@ function App() {
     console.log(jsonData);
   };
 
-  //style height = heighest number in json/ number of element
+  const [highestValue, setHighestValue] = useState(0);
 
-  // data.forEach(item => {
-  //   if (item.amount > highestAmount) {
-  //     highestAmount = item.amount;
-  //   }
-  // });
+  const valueToPercentage = (value: number) => {
+    const decimal = value / highestValue;
+    const percent = Math.floor(decimal * 100);
+    return percent;
+  };
+
+  const parseHighestValue = () => {
+    jsonData.forEach((item) => {
+      if (item.amount > highestValue) {
+        setHighestValue(item.amount);
+      }
+    });
+  };
+
+  useEffect(() => {
+    parseHighestValue();
+    console.log(highestValue);
+  });
 
   return (
     <div className="App">
@@ -28,6 +42,64 @@ function App() {
 
       <div className="App__spending">
         <h1>Spending - Last 7 days</h1>
+
+        {/* <h1 style={{ height: `${valueToPercentage(jsonData[0].amount)}%` }}>
+          test:{valueToPercentage(jsonData[0].amount)}
+        </h1> */}
+
+        <div className="App__table">
+          <div className="App__bar-wrapper">
+            <div
+              className="App__bar"
+              style={{ height: `${valueToPercentage(jsonData[0].amount)}%` }}
+            ></div>
+            <p className="App__day">{jsonData[0].day}</p>
+          </div>
+          <div className="App__bar-wrapper">
+            <div
+              className="App__bar"
+              style={{ height: `${valueToPercentage(jsonData[1].amount)}%` }}
+            ></div>
+            <p className="App__day">{jsonData[1].day}</p>
+          </div>
+          <div className="App__bar-wrapper">
+            <div
+              className="App__bar"
+              style={{ height: `${valueToPercentage(jsonData[2].amount)}%` }}
+            ></div>
+            <p className="App__day">{jsonData[2].day}</p>
+          </div>
+          <div className="App__bar-wrapper">
+            <div
+              className="App__bar"
+              style={{ height: `${valueToPercentage(jsonData[3].amount)}%` }}
+            ></div>
+            <p className="App__day">{jsonData[3].day}</p>
+          </div>
+          <div className="App__bar-wrapper">
+            <div
+              className="App__bar"
+              style={{ height: `${valueToPercentage(jsonData[4].amount)}%` }}
+            ></div>
+            <p className="App__day">{jsonData[4].day}</p>
+          </div>
+          <div className="App__bar-wrapper">
+            <div
+              className="App__bar"
+              style={{ height: `${valueToPercentage(jsonData[5].amount)}%` }}
+            ></div>
+            <p className="App__day">{jsonData[5].day}</p>
+          </div>
+          <div className="App__bar-wrapper">
+            <div
+              className="App__bar"
+              style={{ height: `${valueToPercentage(jsonData[6].amount)}%` }}
+            ></div>
+            <p className="App__day">{jsonData[6].day}</p>
+          </div>
+        </div>
+
+        <div className="App__divider"></div>
       </div>
     </div>
   );
