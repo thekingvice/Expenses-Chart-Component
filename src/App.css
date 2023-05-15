@@ -6,4 +6,28 @@
 .App__spending {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+}
+
+.App__table {
+  display: flex;
+  height: 10rem;
+  gap: 1rem;
+}
+
+.App__bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.App__bar {
+  background: #ec755d;
+  width: 2rem;
+  border-radius: 0.2rem;
+}
+
+.App__bar-highlight {
+  background: #76b5bc;
 }

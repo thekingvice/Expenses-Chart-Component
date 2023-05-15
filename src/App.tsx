@@ -8,8 +8,17 @@ function App() {
   const test = () => {
     console.log(jsonData);
   };
-
+  const [day, setDay] = useState(new Date().getDay());
   const [highestValue, setHighestValue] = useState(0);
+  const [barColor, setBarColor] = useState([
+    "App__bar",
+    "App__bar",
+    "App__bar",
+    "App__bar",
+    "App__bar",
+    "App__bar",
+    "App__bar",
+  ]);
 
   const valueToPercentage = (value: number) => {
     const decimal = value / highestValue;
@@ -25,10 +34,29 @@ function App() {
     });
   };
 
+  const handleHighlightedBar = () => {
+    const list = [
+      "App__bar",
+      "App__bar",
+      "App__bar",
+      "App__bar",
+      "App__bar",
+      "App__bar",
+      "App__bar",
+    ];
+    if (day === 0) {
+      list[6] = "App__bar App__bar-highlight";
+      setBarColor(list);
+    } else {
+      list[day - 1] = "App__bar App__bar-highlight";
+      setBarColor(list);
+    }
+  };
+
   useEffect(() => {
     parseHighestValue();
-    console.log(highestValue);
-  });
+    handleHighlightedBar();
+  }, [highestValue]);
 
   return (
     <div className="App">
@@ -50,49 +78,49 @@ function App() {
         <div className="App__table">
           <div className="App__bar-wrapper">
             <div
-              className="App__bar"
+              className={barColor[0]}
               style={{ height: `${valueToPercentage(jsonData[0].amount)}%` }}
             ></div>
             <p className="App__day">{jsonData[0].day}</p>
           </div>
           <div className="App__bar-wrapper">
             <div
-              className="App__bar"
+              className={barColor[1]}
               style={{ height: `${valueToPercentage(jsonData[1].amount)}%` }}
             ></div>
             <p className="App__day">{jsonData[1].day}</p>
           </div>
           <div className="App__bar-wrapper">
             <div
-              className="App__bar"
+              className={barColor[2]}
               style={{ height: `${valueToPercentage(jsonData[2].amount)}%` }}
             ></div>
             <p className="App__day">{jsonData[2].day}</p>
           </div>
           <div className="App__bar-wrapper">
             <div
-              className="App__bar"
+              className={barColor[3]}
               style={{ height: `${valueToPercentage(jsonData[3].amount)}%` }}
             ></div>
             <p className="App__day">{jsonData[3].day}</p>
           </div>
           <div className="App__bar-wrapper">
             <div
-              className="App__bar"
+              className={barColor[4]}
               style={{ height: `${valueToPercentage(jsonData[4].amount)}%` }}
             ></div>
             <p className="App__day">{jsonData[4].day}</p>
           </div>
           <div className="App__bar-wrapper">
             <div
-              className="App__bar"
+              className={barColor[5]}
               style={{ height: `${valueToPercentage(jsonData[5].amount)}%` }}
             ></div>
             <p className="App__day">{jsonData[5].day}</p>
           </div>
           <div className="App__bar-wrapper">
             <div
-              className="App__bar"
+              className={barColor[6]}
               style={{ height: `${valueToPercentage(jsonData[6].amount)}%` }}
             ></div>
             <p className="App__day">{jsonData[6].day}</p>
