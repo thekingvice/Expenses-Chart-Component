@@ -8,7 +8,8 @@ function App() {
   const test = () => {
     console.log(jsonData);
   };
-  const [day, setDay] = useState(new Date().getDay());
+
+  const [day] = useState(new Date().getDay());
   const [highestValue, setHighestValue] = useState(0);
   const [barColor, setBarColor] = useState([
     "App__bar",
@@ -56,25 +57,21 @@ function App() {
   useEffect(() => {
     parseHighestValue();
     handleHighlightedBar();
-  }, [highestValue]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="App">
       <div className="App__balance">
         <div className="App__balance-wrapper">
           <p>My Balance</p>
-          <h1>$921.48</h1>
+          <h1 className="App__balance-total">$921.48</h1>
         </div>
         <img onClick={test} src="logo.svg" alt="logo" />
       </div>
 
       <div className="App__spending">
-        <h1>Spending - Last 7 days</h1>
-
-        {/* <h1 style={{ height: `${valueToPercentage(jsonData[0].amount)}%` }}>
-          test:{valueToPercentage(jsonData[0].amount)}
-        </h1> */}
-
+        <h1 className="App__spending-header">Spending - Last 7 days</h1>
         <div className="App__table">
           <div className="App__bar-wrapper">
             <div
@@ -128,6 +125,16 @@ function App() {
         </div>
 
         <div className="App__divider"></div>
+        <div className="App__total">
+          <div className="App__monthly">
+            <p className="App__label">Total this month</p>
+            <h1 className="App__amount">$478.33</h1>
+          </div>
+          <div className="App__change">
+            <h1 className="App__percentage">+2.4%</h1>
+            <p className="App__comparison">from last month</p>
+          </div>
+        </div>
       </div>
     </div>
   );

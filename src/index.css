@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap");
+
 *,
 *::before,
 *::after {
@@ -10,15 +12,20 @@
   border: 0;
   font: inherit;
   background: none;
-  background: rgba(146, 146, 146, 0.266);
-  outline: dotted 2px;
+  /* background: rgba(146, 146, 146, 0.266);
+  outline: dotted 2px; */
 }
 
 html {
+  background: #f6eade;
+  font-family: "DM Sans", sans-serif;
 }
 
 body {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 img,
