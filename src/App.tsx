@@ -1,8 +1,6 @@
 import "./App.css";
 import jsonData from "../public/data.json";
 import { useState, useEffect } from "react";
-// Import JSON data
-// Link JSON data to bar chart (100% = highest value)
 
 function App() {
   const test = () => {
@@ -58,7 +56,7 @@ function App() {
     parseHighestValue();
     handleHighlightedBar();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [highestValue]);
 
   return (
     <div className="App">
